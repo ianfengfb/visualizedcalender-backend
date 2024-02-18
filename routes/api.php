@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CalendarEventController;
 use App\Http\Controllers\EventTypeController;
 
 /*
@@ -32,6 +33,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Event APIs
+|--------------------------------------------------------------------------
+|
+|
+*/
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/events', [CalendarEventController::class, 'getEvent']);
+    Route::post('/events', [CalendarEventController::class, 'createNewEvent']);
+    Route::put('/events', [CalendarEventController::class, 'updateEvent']);
+    Route::delete('/events', [CalendarEventController::class, 'deleteEvent']);
+});
 
 /*
 |--------------------------------------------------------------------------

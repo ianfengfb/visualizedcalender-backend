@@ -17,6 +17,10 @@ return new class extends Migration
             $table->integer('event_type_id')->unsigned();
             $table->string('title');
             $table->text('description')->nullable();
+            $table->string('duration');
+            $table->boolean('mondatory');
+            $table->integer('happy');
+            $table->integer('meaning');
             $table->dateTime('date');
             $table->timestamps();
         });
