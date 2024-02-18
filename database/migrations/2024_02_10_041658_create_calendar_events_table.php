@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('mondatory');
             $table->integer('happy');
             $table->integer('meaning');
-            $table->dateTime('date');
+            $table->date('date');
             $table->timestamps();
         });
     }
