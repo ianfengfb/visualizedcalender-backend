@@ -20,4 +20,14 @@ class CalendarEvent extends Model
         'meaning',
         'date',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function event_type()
+    {
+        return $this->hasMany(EventType::class, 'event_type_id', 'id');
+    }
 }

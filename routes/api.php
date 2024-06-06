@@ -59,5 +59,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event-type', [EventTypeController::class, 'getEventTypes']);
     Route::post('/event-type', [EventTypeController::class, 'createNewEventType']);
     Route::put('/event-type', [EventTypeController::class, 'updateEventType']);
-    Route::delete('/event-type', [EventTypeController::class, 'deleteEventType']);
+    Route::delete('/event-type/{id}', [EventTypeController::class, 'deleteEventType']);
 });
