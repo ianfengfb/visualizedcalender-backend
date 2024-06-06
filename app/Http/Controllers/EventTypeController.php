@@ -149,26 +149,12 @@ class EventTypeController extends Controller
      * @return JsonResponse
      */
 
-    public function deleteEventType(Request $request): JsonResponse
+    public function deleteEventType(Request $request, $id): JsonResponse
     {
-        $rules = array(
-            'id' => 'required|integer|exists:event_types,id',
-        );
-        $requestData = $request->all();
-        $validator= Validator::make($requestData,$rules);
-
-        if (isset($validator) && $validator->fails()) {
-            return new JsonResponse([
-                'status' => 'error',
-                'data' => [],
-                'status_code' => JsonResponse::HTTP_UNPROCESSABLE_ENTITY,
-                'message' => $validator->errors(),
-            ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
-        }
 
         $user = auth()->user();
 
-        $eventType = $user->event_types()->find($requestData['id']);
+        $eventType = $user->event_types()->find($id);
 
         if (!$eventType) {
             return new JsonResponse([

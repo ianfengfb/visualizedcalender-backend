@@ -12,9 +12,20 @@ class CalendarEventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getEvent()
     {
-        //
+        $user = auth()->user();
+
+        $calendarEvents = $user->calendar_events;
+
+        $result = [
+            'status' => 'success',
+            'data' => $calendarEvents,
+            'status_code' => JsonResponse::HTTP_OK,
+            'message' => 'Events retrieved successfully!',
+        ];
+
+        return new JsonResponse($result, JsonResponse::HTTP_OK);
     }
 
     /**
